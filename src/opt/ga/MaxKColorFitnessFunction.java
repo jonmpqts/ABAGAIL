@@ -30,7 +30,7 @@ public class MaxKColorFitnessFunction implements EvaluationFunction {
      * Track number of times value() is called.
      * Expected to be incremented by all value() calls.
      */
-    private long valueCallCounts = 0;
+    public long valueCallCounts = 0;
 
     /**
      * @see opt.EvaluationFunction#value(opt.OptimizationData)
