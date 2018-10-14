@@ -14,6 +14,12 @@ public class ContinuousPeaksEvaluationFunction implements EvaluationFunction {
      * The t value
      */
     private int t;
+
+    /**
+     * Track number of times value() is called.
+     * Expected to be incremented by all value() calls.
+     */
+    public long valueCallCount = 0;
     
     /**
      * Make a new continuous peaks function
@@ -50,6 +56,7 @@ public class ContinuousPeaksEvaluationFunction implements EvaluationFunction {
         if (max1 > t && max0 > t) {
             r = data.size();
         }
+        this.valueCallCount += 1;
         return Math.max(max1, max0) + r;
     }
 }

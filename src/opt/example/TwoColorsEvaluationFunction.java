@@ -10,6 +10,11 @@ import shared.Instance;
  * @version 1.0
  */
 public class TwoColorsEvaluationFunction implements EvaluationFunction {
+    /**
+     * Track number of times value() is called.
+     * Expected to be incremented by all value() calls.
+     */
+    public long valueCallCount = 0;
 
     /**
      * @see opt.EvaluationFunction#value(opt.OptimizationData)
@@ -22,7 +27,7 @@ public class TwoColorsEvaluationFunction implements EvaluationFunction {
                 val++;
             }
         }
-
+        this.valueCallCount += 1;
         return val;
     }
 

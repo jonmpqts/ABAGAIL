@@ -11,6 +11,11 @@ import shared.Instance;
  * @version 1.0
  */
 public class TravelingSalesmanRouteEvaluationFunction extends TravelingSalesmanEvaluationFunction {
+    /**
+     * Track number of times value() is called.
+     * Expected to be incremented by all value() calls.
+     */
+    public long valueCallCounts = 0;
 
     /**
      * Make a new route evaluation function
@@ -29,6 +34,7 @@ public class TravelingSalesmanRouteEvaluationFunction extends TravelingSalesmanE
             distance += getDistance(d.getDiscrete(i), d.getDiscrete(i+1));
         }
         distance += getDistance(d.getDiscrete(d.size() - 1), d.getDiscrete(0));
+        this.valueCallCounts += 1;
         return 1/distance;
     }
 

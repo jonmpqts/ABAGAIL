@@ -30,6 +30,12 @@ public class KnapsackEvaluationFunction implements EvaluationFunction {
      * The weight of all the items
      */
     private double allItemsWeight;
+
+    /**
+     * Track number of times value() is called.
+     * Expected to be incremented by all value() calls.
+     */
+    public long valueCallCount = 0;
     
     /**
      * Make a new knapsack evaluation function
@@ -61,6 +67,7 @@ public class KnapsackEvaluationFunction implements EvaluationFunction {
             weight += weights[i] * entriesInKnapsack.get(i);
             value += values[i] * entriesInKnapsack.get(i);
         }
+        this.valueCallCount += 1;
         if (weight < maxWeight) {
             return value;
         } else {

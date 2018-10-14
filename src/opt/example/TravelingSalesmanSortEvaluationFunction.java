@@ -11,6 +11,11 @@ import util.ABAGAILArrays;
  * @version 1.0
  */
 public class TravelingSalesmanSortEvaluationFunction extends TravelingSalesmanEvaluationFunction {
+    /**
+     * Track number of times value() is called.
+     * Expected to be incremented by all value() calls.
+     */
+    public long valueCallCount = 0;
 
     /**
      * Make a new traveling salesman evaluation function
@@ -35,6 +40,7 @@ public class TravelingSalesmanSortEvaluationFunction extends TravelingSalesmanEv
             distance += getDistance(order[i], order[i+1]);
         }
         distance += getDistance(order[order.length - 1], order[0]);
+        this.valueCallCount += 1;
         return 1/distance;
     }
 
