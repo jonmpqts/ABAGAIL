@@ -27,6 +27,12 @@ public class MaxKColorFitnessFunction implements EvaluationFunction {
     private boolean conflict = false;
 
     /**
+     * Track number of times value() is called.
+     * Expected to be incremented by all value() calls.
+     */
+    private long valueCallCounts = 0;
+
+    /**
      * @see opt.EvaluationFunction#value(opt.OptimizationData)
      * Find how many iterations does it take to find if k-colors can be or can not be assigned to a given graph.
      */
@@ -50,6 +56,7 @@ public class MaxKColorFitnessFunction implements EvaluationFunction {
               //System.out.println("---------");
             }
         }
+        this.valueCallCounts += 1;
         return iterations;
     }
 
